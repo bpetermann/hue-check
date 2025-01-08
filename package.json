@@ -6,13 +6,15 @@
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
   "files": [
-    "dist"
+    "dist",
+    "LICENSE",
+    "README.md"
   ],
   "scripts": {
     "build": "tsup",
     "test": "jest",
     "lint": "eslint .",
-    "foo": "jest && npm run build"
+    "prepublishOnly": "jest && npm run build"
   },
   "author": "bpetermann",
   "license": "MIT",
