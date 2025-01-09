@@ -12,7 +12,7 @@
   ],
   "scripts": {
     "build": "tsup",
-    "test": "jest",
+    "test": "jest --watch",
     "lint": "eslint .",
     "prepublishOnly": "jest && npm run build"
   },
