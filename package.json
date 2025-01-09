@@ -1,5 +1,5 @@
 {
-  "name": "visicolor",
+  "name": "hue-check",
   "version": "0.0.0",
   "description": "A lightweight library for checking color contrast and generating accessible color palettes",
   "main": "./dist/index.js",
