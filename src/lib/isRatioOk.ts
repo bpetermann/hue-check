@@ -1,4 +1,4 @@
-import { Hex, convertToRgb } from './colorUtils';
+import { convertToRgb } from './colorUtils';
 import { fontSize } from './fontUtils';
 import {
   contrastRatio,
@@ -9,8 +9,8 @@ import {
 /**
  * Determines if the contrast ratio between two colors meets the specified WCAG accessibility level.
  *
- * @param {Hex | string} color1 - The first color in hex format (e.g., `#ffffff`) or a named color (e.g., "red"). Invalid or missing colors result in `undefined`.
- * @param {Hex | string} color2 - The second color in hex format or a named color. Invalid or missing colors result in `undefined`.
+ * @param {string} color1 - The first color in hex format (e.g., `#ffffff`) or a named color (e.g., "red"). Invalid or missing colors result in `undefined`.
+ * @param {string} color2 - The second color in hex format or a named color. Invalid or missing colors result in `undefined`.
  * @param {'AA' | 'AAA'} [level='AAA'] - The WCAG accessibility level ('AA' or 'AAA'). Defaults to 'AAA'.
  *   - 'AA': Requires a contrast ratio of at least 4.5:1 for small text and 3:1 for large text.
  *   - 'AAA': Requires a contrast ratio of at least 7:1 for small text and 4.5:1 for large text.
@@ -37,8 +37,8 @@ import {
  */
 
 export const isRatioOk = (
-  color1: Hex | string,
-  color2: Hex | string,
+  color1: string,
+  color2: string,
   level: 'AA' | 'AAA' = 'AAA',
   textSize?: string | number
 ): boolean | undefined => {
