@@ -1,5 +1,8 @@
 # Hue Check
 
+[![NPM version][npm-image]][npm-url] ![npm-typescript] ![GitHub License](https://img.shields.io/github/license/bpetermann/hue-check)
+![NPM Downloads](https://img.shields.io/npm/dw/hue-check)
+
 **Hue check** is a lightweight library for checking color contrast and generating accessible color palettes.
 
 ## Features
@@ -19,11 +22,15 @@ Determines if the contrast ratio between two colors meets the specified WCAG acc
 
 - `boolean | undefined`: `true` if the contrast ratio meets the specified WCAG level, false otherwise, or undefined if the input colors are invalid.
 
+**Example:**
+
 ```ts
 import { isRatioOk } from 'hue-check';
 
 console.log(isRatioOk('papayawhip', '#000')); // true
 ```
+
+---
 
 ### contrastColors
 
@@ -37,7 +44,7 @@ Generates an array of CSS named colors that meet the specified contrast requirem
 
 **Returns:**
 
-- string[]: An array of CSS named colors that meet the specified contrast ratio requirements.
+- `string[]`: An array of CSS named colors that meet the specified contrast ratio requirements.
 
 **Example:**
 
@@ -60,3 +67,6 @@ To check full changelog click [here](https://github.com/bpetermann/hue-check/blo
 [MIT][github-license-url]
 
 [github-license-url]: https://github.com/bpetermann/hue-check/blob/main/LICENSE
+[npm-url]: https://www.npmjs.com/package/hue-check
+[npm-image]: https://img.shields.io/npm/v/hue-check
+[npm-typescript]: https://img.shields.io/npm/types/hue-check
