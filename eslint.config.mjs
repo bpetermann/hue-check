@@ -17,5 +17,13 @@ export default [
       },
     },
   },
-  { ignores: ['coverage/**', 'node_modules/*', '**/jest.config.js'] },
+  {
+    ignores: [
+      'coverage/**',
+      'node_modules/*',
+      '**/jest.config.js',
+      'dist/**',
+      'demo/**',
+    ],
+  },
 ];
