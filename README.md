@@ -15,12 +15,12 @@ Determines if the contrast ratio between two colors meets the specified WCAG acc
 
 - `color1` (string): The first color, as a hex code (e.g., `#000000`) or a CSS named color (e.g., `papayawhip`).
 - `color2` (string): The second color, as a hex code or a CSS named color.
-- `level` (`'AA' | 'AAA'`, optional): The WCAG accessibility level. Defaults to 'AAA'.
+- `level` (`'AA' | 'AAA'`, optional): The WCAG accessibility level. Defaults to `AAA`.
 - `textSize` (string | number, optional): The size of the text, either as a number (e.g., `18`) or a string (e.g., `12px`).
 
 **Returns:**
 
-- `boolean | undefined`: `true` if the contrast ratio meets the specified WCAG level, false otherwise, or undefined if the input colors are invalid.
+- `boolean | undefined`: `true` if the contrast ratio meets the specified WCAG level, `false` otherwise, or `undefined` if the input colors are invalid.
 
 **Example:**
 
