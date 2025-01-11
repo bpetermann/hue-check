@@ -57,23 +57,33 @@ h1 {
 
 .card {
   padding: 2em;
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 1rem;
 }
 
 .read-the-docs {
   color: #888;
 }
 
-button {
+button,
+input,
+label {
   border-radius: 8px;
   border: 1px solid transparent;
   padding: 0.6em 1.2em;
   font-size: 1em;
   font-weight: 500;
   font-family: inherit;
-  background-color: #1a1a1a;
+}
+
+button {
   cursor: pointer;
+  background-color: #1a1a1a;
   transition: border-color 0.25s;
 }
+
 button:hover {
   border-color: #646cff;
 }

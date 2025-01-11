@@ -1,11 +1,7 @@
 import { contrastColors, isRatioOk } from 'hue-check';
-import { setupCounter } from './counter.ts';
 import './style.css';
 import typescriptLogo from './typescript.svg';
 import viteLogo from '/vite.svg';
-
-console.log(isRatioOk('papayawhip', '#000', 'AA', 18));
-console.log(contrastColors('papayawhip'));
 
 document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <div>
@@ -17,12 +13,45 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
     </a>
     <h1>Vite + TypeScript</h1>
     <div class="card">
-      <button id="counter" type="button"></button>
+      <label for="name">Enter Color 1:</label>
+        <input type="text" id="input1" name="input1" placeholder="Color value" />
+      <label for="name">Enter Color 2:</label>
+        <input type="text" id="input2" name="input2" placeholder="Color value"/>
+      <button id="counter" type="button">Check Ratio</button>
     </div>
-    <p class="read-the-docs">
-      Click on the Vite and TypeScript logos to learn more
-    </p>
+      <h2 id="result"></h2>
   </div>
 `;
 
-setupCounter(document.querySelector<HTMLButtonElement>('#counter')!);
+const input1 = document.querySelector<HTMLInputElement>('#input1')!;
+const input2 = document.querySelector<HTMLInputElement>('#input2')!;
+const button = document.querySelector<HTMLButtonElement>('#counter')!;
+const result = document.querySelector<HTMLParagraphElement>('#result')!;
+
+const randomColor = (colors: string[]) =>
+  colors[Math.floor(Math.random() * colors.length)];
+
+const ratioCheckResult = (color1: string, color2: string) =>
+  `Ratio is ${isRatioOk(color1, color2) ? 'valid' : 'not valid'}`;
+
+const handleColorInput = (value: string, element: HTMLInputElement) => {
+  const colors = contrastColors(value);
+
+  if (!colors.length) return;
+
+  element.style.color = value;
+  element.style.backgroundColor = randomColor(colors);
+};
+
+input1.addEventListener('change', (event) =>
+  handleColorInput((event.target as HTMLInputElement).value, input1)
+);
+
+input2.addEventListener('change', (event) =>
+  handleColorInput((event.target as HTMLInputElement).value, input2)
+);
+
+button.addEventListener(
+  'click',
+  () => (result.innerHTML = ratioCheckResult(input1.value, input2.value))
+);
