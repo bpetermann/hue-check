@@ -21,8 +21,8 @@ export const expandShortHex = (hex: `#${string}`): `#${string}` =>
         .join('') as `#${string}`)
     : hex;
 
-export const isHexType = (color: string): color is `#${string}` =>
-  color.startsWith('#');
+export const isHex = (color: string): color is `#${string}` =>
+  /^#([0-9A-Fa-f]{3}|[0-9A-Fa-f]{6})$/.test(color);
 
 export const convertToRgb = (color: string): [number, number, number] | null =>
-  isHexType(color) ? hexToRgb(expandShortHex(color)) : namedColorToRgb(color);
+  isHex(color) ? hexToRgb(expandShortHex(color)) : namedColorToRgb(color);

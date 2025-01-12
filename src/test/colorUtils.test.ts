@@ -1,6 +1,7 @@
 import {
   convertToRgb,
   expandShortHex,
+  isHex,
   namedColorToRgb,
 } from '../lib/colorUtils';
 
@@ -14,6 +15,28 @@ describe('Color Utils', () => {
 
   test('Unknown named color returns null', () =>
     expect(namedColorToRgb('unknown')).toBeNull());
+
+  // isHex
+  test('Should return false if string is no valid hexcode', () => {
+    [
+      '#12',
+      '#12345',
+      '#1234567',
+      '#12G',
+      '#ZZZZZZ',
+      '#12!3FF',
+      '#12!3FF',
+      '#123 45',
+      '123456',
+      'FFF',
+      '#',
+      '#12345678',
+      '',
+      '#00000000',
+    ].forEach((str) => {
+      expect(isHex(str)).toBe(false);
+    });
+  });
 
   // expandShortHex
   test('Short hex "#000" expands to "#000000"', () =>

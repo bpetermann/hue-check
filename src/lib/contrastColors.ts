@@ -1,3 +1,4 @@
+import { isHex } from './colorUtils';
 import { cssNamedColors } from './cssNamedColors';
 import { isRatioOk } from './isRatioOk';
 
@@ -25,11 +26,11 @@ import { isRatioOk } from './isRatioOk';
 export const contrastColors = (
   color: string,
   level: 'AA' | 'AAA' = 'AAA',
-  textSize?: string
+  textSize?: string | number
 ): string[] => {
-  if (!color.startsWith('#') && !cssNamedColors[color]) return [];
+  if (!isHex(color) && !cssNamedColors[color.toLowerCase()]) return [];
 
   return Object.keys(cssNamedColors).filter((key) =>
-    isRatioOk(color, key, level, textSize)
+    isRatioOk(color.toLowerCase(), key, level, textSize)
   );
 };
