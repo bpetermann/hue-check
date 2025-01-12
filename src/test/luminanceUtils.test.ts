@@ -1,8 +1,9 @@
 import { convertToRgb } from '../lib/colorUtils';
 import {
-  contrastRatio,
+  getRatio,
   luminance,
   meetsContrastRequirement,
+  ratio,
 } from '../lib/luminanceUtils';
 
 describe('Luminance and Contrast Helpers', () => {
@@ -19,9 +20,7 @@ describe('Luminance and Contrast Helpers', () => {
     const color2 = convertToRgb('#ACC8E5');
     if (!color1 || !color2) throw new Error('Invalid colors');
 
-    expect(contrastRatio(luminance(color1), luminance(color2))).toBeCloseTo(
-      8.42
-    );
+    expect(ratio(luminance(color1), luminance(color2))).toBeCloseTo(8.42);
   });
 
   test('Contrast ratio of "cyan" and "darkmagenta" is close to 6.78', () => {
@@ -29,9 +28,7 @@ describe('Luminance and Contrast Helpers', () => {
     const color2 = convertToRgb('darkmagenta');
     if (!color1 || !color2) throw new Error('Invalid colors');
 
-    expect(contrastRatio(luminance(color1), luminance(color2))).toBeCloseTo(
-      6.78
-    );
+    expect(ratio(luminance(color1), luminance(color2))).toBeCloseTo(6.78);
   });
 
   test('Contrast ratio of "white" and "#000" is 21', () => {
@@ -39,7 +36,7 @@ describe('Luminance and Contrast Helpers', () => {
     const color2 = convertToRgb('#000');
     if (!color1 || !color2) throw new Error('Invalid colors');
 
-    expect(contrastRatio(luminance(color1), luminance(color2))).toBeCloseTo(21);
+    expect(ratio(luminance(color1), luminance(color2))).toBeCloseTo(21);
   });
 
   test('Contrast ratio is symmetrical regardless of color order', () => {
@@ -47,9 +44,26 @@ describe('Luminance and Contrast Helpers', () => {
     const color2 = convertToRgb('#000');
     if (!color1 || !color2) throw new Error('Invalid colors');
 
-    expect(contrastRatio(luminance(color1), luminance(color2))).toEqual(
-      contrastRatio(luminance(color2), luminance(color1))
+    expect(ratio(luminance(color1), luminance(color2))).toEqual(
+      ratio(luminance(color2), luminance(color1))
     );
+  });
+
+  // getRatio
+  test('Get the right ratio for "AA" and "small" textSize', () => {
+    expect(getRatio('AA', 'small')).toEqual(4.5);
+  });
+
+  test('Get the right ratio for "AA" and "large" textSize', () => {
+    expect(getRatio('AA', 'large')).toEqual(3);
+  });
+
+  test('Get the right ratio for "AAA" and "small" textSize', () => {
+    expect(getRatio('AAA', 'small')).toEqual(7);
+  });
+
+  test('Get the right ratio for "AAA" and "large" textSize', () => {
+    expect(getRatio('AAA', 'large')).toEqual(4.5);
   });
 
   // Contrast Requirement
@@ -58,7 +72,9 @@ describe('Luminance and Contrast Helpers', () => {
     const color2 = convertToRgb('#000');
     if (!color1 || !color2) throw new Error('Invalid colors');
 
-    const ratio = contrastRatio(luminance(color1), luminance(color2));
-    expect(meetsContrastRequirement(ratio, 'AA', 'small')).toEqual(true);
+    const contrastRatio = ratio(luminance(color1), luminance(color2));
+    expect(meetsContrastRequirement(contrastRatio, 'AA', 'small')).toEqual(
+      true
+    );
   });
 });

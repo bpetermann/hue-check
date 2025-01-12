@@ -6,10 +6,10 @@ export const luminance = (rgb: [number, number, number]) => {
   return r * 0.2126 + g * 0.7152 + b * 0.0722;
 };
 
-export const contrastRatio = (lum1: number, lum2: number) =>
+export const ratio = (lum1: number, lum2: number): number =>
   lum1 > lum2 ? (lum1 + 0.05) / (lum2 + 0.05) : (lum2 + 0.05) / (lum1 + 0.05);
 
-const getRatio = (level: 'AA' | 'AAA', textSize: 'small' | 'large') =>
+export const getRatio = (level: 'AA' | 'AAA', textSize: 'small' | 'large') =>
   level === 'AAA'
     ? textSize === 'small'
       ? 7
@@ -19,7 +19,7 @@ const getRatio = (level: 'AA' | 'AAA', textSize: 'small' | 'large') =>
     : 3;
 
 export const meetsContrastRequirement = (
-  contrastRatio: number,
+  ratio: number,
   level: 'AA' | 'AAA',
   textSize: 'small' | 'large'
-): boolean => contrastRatio >= getRatio(level, textSize);
+): boolean => ratio >= getRatio(level, textSize);
