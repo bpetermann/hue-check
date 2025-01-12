@@ -10,6 +10,12 @@
     "LICENSE",
     "README.md"
   ],
+  "keywords": [
+    "colors",
+    "a11y",
+    "accessibility",
+    "css"
+  ],
   "scripts": {
     "build": "tsup",
     "test": "jest --watch",

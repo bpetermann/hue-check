@@ -1,57 +1,38 @@
-# Hue Check
-
-[![NPM version][npm-image]][npm-url] ![npm-typescript] ![GitHub License](https://img.shields.io/github/license/bpetermann/hue-check)
-![NPM Downloads](https://img.shields.io/npm/dw/hue-check)
+# :art: Hue Check &middot; [![NPM version][npm-image]][npm-url] ![npm-typescript] ![GitHub License](https://img.shields.io/github/license/bpetermann/hue-check) ![NPM Downloads](https://img.shields.io/npm/dw/hue-check)
 
 **Hue check** is a lightweight library for checking color contrast and generating accessible color palettes.
 
 ## Features
 
-### isRatioOk
+### :arrow_right: `isRatioOk`
 
-Determines if the contrast ratio between two colors meets the specified WCAG accessibility level.
+- Determines if the contrast ratio between two colors meets the specified **WCAG accessibility level**.
+- **Returns:**
+  - `true` if the contrast ratio meets the specified WCAG level.
+  - `false` if it doesn’t meet the level.
+  - `undefined` if the input colors are invalid.
 
-**Parameters:**
+### :arrow_right: `contrastColors`
 
-- `color1` (string): The first color, as a hex code (e.g., `#000000`) or a CSS named color (e.g., `papayawhip`).
-- `color2` (string): The second color, as a hex code or a CSS named color.
-- `level` (`'AA' | 'AAA'`, optional): The WCAG accessibility level. Defaults to `AAA`.
-- `textSize` (string | number, optional): The size of the text, either as a number (e.g., `18`) or a string (e.g., `12px`).
+- Generates an array of CSS named colors that meet the specified contrast ratio requirements with a given color.
+- **Returns:**
+  - An array of CSS named colors.
 
-**Returns:**
+### :arrow_right: `contrastRatio`
 
-- `boolean | undefined`: `true` if the contrast ratio meets the specified WCAG level, `false` otherwise, or `undefined` if the input colors are invalid.
+- Calculates the contrast ratio between two colors.
+- **Returns:**
+  - The contrast ratio between the two colors.
+  - `undefined` if the input colors are invalid.
 
-**Example:**
-
-```ts
-import { isRatioOk } from 'hue-check';
-
-console.log(isRatioOk('papayawhip', '#000')); // true
-```
-
----
-
-### contrastColors
-
-Generates an array of CSS named colors that meet the specified contrast requirements with a given color.
-
-**Parameters:**
-
-- `color` (string): The base color, as a hex code or a CSS named color.
-- `level` (`AA` | `AAA`, optional): The WCAG accessibility level. Defaults to `AAA`.
-- `textSize` (string | number, optional): The size of the text, either as a number (e.g., `18`) or a string (e.g., `12px`).
-
-**Returns:**
-
-- `string[]`: An array of CSS named colors that meet the specified contrast ratio requirements.
-
-**Example:**
+## Example:
 
 ```ts
-import { contrastColors } from 'hue-check';
+import { contrastColors, contrastRatio, isRatioOk } from 'hue-check';
 
-console.log(contrastColors('papayawhip')); // ["black", "blue", ...]
+const sufficentRatio = isRatioOk('papayawhip', '#000'); // true
+const contrastColor = contrastColors('papayawhip')?.[0] ?? ''; // "black"
+const ratio = contrastRatio('white', '#000000'); // 21
 ```
 
 ## Contributing
