@@ -10,6 +10,9 @@ describe('Is Ratio Ok', () => {
   test('Ratio between #426144 and #ACC8E5 is not sufficent for small Text and level"AAA"', () =>
     expect(isRatioOk('#426144', '#ACC8E5')).toEqual(false));
 
+  test('Ratio between #426144 and #ACC8E5 is not sufficent for large Text and level"AAA"', () =>
+    expect(isRatioOk('#426144', '#ACC8E5', 'AAA', '18px')).toEqual(false));
+
   test('Ratio between #426144 and #ACC8E5 and text size via "px"', () => {
     expect(isRatioOk('#426144', '#ACC8E5', 'AA', '18px')).toEqual(true);
   });
