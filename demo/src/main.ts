@@ -96,11 +96,17 @@ const handleColorInput = (value: string, element: HTMLInputElement): void => {
   element.style.backgroundColor = randomColor(colors);
 };
 input1.addEventListener('change', (event) =>
-  handleColorInput((event.target as HTMLInputElement).value, input1)
+  handleColorInput(
+    (event.target as HTMLInputElement).value.toLowerCase(),
+    input1
+  )
 );
 
 input2.addEventListener('change', (event) =>
-  handleColorInput((event.target as HTMLInputElement).value, input2)
+  handleColorInput(
+    (event.target as HTMLInputElement).value.toLowerCase(),
+    input2
+  )
 );
 
 button.addEventListener('click', () => {

@@ -1,4 +1,4 @@
-const isLargeFont = (size: string | number | undefined) =>
+export const isLargeFont = (size: string | number | undefined) =>
   typeof size === 'string'
     ? convertToPx(size) >= 18
     : typeof size === 'number'

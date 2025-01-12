@@ -4,7 +4,7 @@
 
 ## Features
 
-### :arrow_right: `isRatioOk`
+### :arrow_right: isRatioOk
 
 - Determines if the contrast ratio between two colors meets the specified **WCAG accessibility level**.
 - **Returns:**
@@ -12,20 +12,20 @@
   - `false` if it doesn’t meet the level.
   - `undefined` if the input colors are invalid.
 
-### :arrow_right: `contrastColors`
+### :arrow_right: contrastColors
 
 - Generates an array of CSS named colors that meet the specified contrast ratio requirements with a given color.
 - **Returns:**
   - An array of CSS named colors.
 
-### :arrow_right: `contrastRatio`
+### :arrow_right: contrastRatio
 
 - Calculates the contrast ratio between two colors.
 - **Returns:**
   - The contrast ratio between the two colors.
   - `undefined` if the input colors are invalid.
 
-## Example:
+## Example
 
 ```ts
 import { contrastColors, contrastRatio, isRatioOk } from 'hue-check';

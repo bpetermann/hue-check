@@ -8,14 +8,14 @@ import {
 
 describe('Luminance and Contrast Helpers', () => {
   // Luminance
-  test('Luminance of "black" is 0', () =>
+  test('Calculates luminance of black as 0', () =>
     expect(luminance([0, 0, 0])).toEqual(0));
 
-  test('Luminance of "white" is 1', () =>
+  test('Calculates luminance of white as 1', () =>
     expect(luminance([255, 255, 255])).toEqual(1));
 
   // Contrast Ratio
-  test('Contrast ratio of #112A46 and #ACC8E5 is close to 8.42', () => {
+  test('Calculates contrast ratio for #112A46 and #ACC8E5 as approximately 8.42', () => {
     const color1 = convertToRgb('#112A46');
     const color2 = convertToRgb('#ACC8E5');
     if (!color1 || !color2) throw new Error('Invalid colors');
@@ -23,7 +23,7 @@ describe('Luminance and Contrast Helpers', () => {
     expect(ratio(luminance(color1), luminance(color2))).toBeCloseTo(8.42);
   });
 
-  test('Contrast ratio of "cyan" and "darkmagenta" is close to 6.78', () => {
+  test('Calculates contrast ratio for cyan and darkmagenta as approximately 6.78', () => {
     const color1 = convertToRgb('cyan');
     const color2 = convertToRgb('darkmagenta');
     if (!color1 || !color2) throw new Error('Invalid colors');
@@ -31,15 +31,15 @@ describe('Luminance and Contrast Helpers', () => {
     expect(ratio(luminance(color1), luminance(color2))).toBeCloseTo(6.78);
   });
 
-  test('Contrast ratio of "white" and "#000" is 21', () => {
+  test('Calculates maximum contrast ratio (21) for white and black', () => {
     const color1 = convertToRgb('white');
     const color2 = convertToRgb('#000');
     if (!color1 || !color2) throw new Error('Invalid colors');
 
-    expect(ratio(luminance(color1), luminance(color2))).toBeCloseTo(21);
+    expect(ratio(luminance(color1), luminance(color2))).toEqual(21);
   });
 
-  test('Contrast ratio is symmetrical regardless of color order', () => {
+  test('Ensures contrast ratio is symmetrical', () => {
     const color1 = convertToRgb('white');
     const color2 = convertToRgb('#000');
     if (!color1 || !color2) throw new Error('Invalid colors');
@@ -50,24 +50,20 @@ describe('Luminance and Contrast Helpers', () => {
   });
 
   // getRatio
-  test('Get the right ratio for "AA" and "small" textSize', () => {
-    expect(getRatio('AA', 'small')).toEqual(4.5);
-  });
+  test('Returns correct contrast threshold for "AA" with small text', () =>
+    expect(getRatio('AA', 'small')).toEqual(4.5));
 
-  test('Get the right ratio for "AA" and "large" textSize', () => {
-    expect(getRatio('AA', 'large')).toEqual(3);
-  });
+  test('Returns correct contrast threshold for "AA" with large text', () =>
+    expect(getRatio('AA', 'large')).toEqual(3));
 
-  test('Get the right ratio for "AAA" and "small" textSize', () => {
-    expect(getRatio('AAA', 'small')).toEqual(7);
-  });
+  test('Returns correct contrast threshold for "AAA" with small text', () =>
+    expect(getRatio('AAA', 'small')).toEqual(7));
 
-  test('Get the right ratio for "AAA" and "large" textSize', () => {
-    expect(getRatio('AAA', 'large')).toEqual(4.5);
-  });
+  test('Returns correct contrast threshold for "AAA" with large text', () =>
+    expect(getRatio('AAA', 'large')).toEqual(4.5));
 
   // Contrast Requirement
-  test('Contrast requirement passes for "white" and "#000" with AA small text', () => {
+  test('Passes contrast requirement for white and black with AA small text', () => {
     const color1 = convertToRgb('white');
     const color2 = convertToRgb('#000');
     if (!color1 || !color2) throw new Error('Invalid colors');
