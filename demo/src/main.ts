@@ -11,9 +11,9 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
   <a href="https://www.typescriptlang.org/" target="_blank">
     <img src="${typescriptLogo}" class="logo vanilla" alt="TypeScript logo" />
   </a>
-  <h1>Vite + TypeScript</h1>
+  <h1>Hue Check Demo</h1>
 
-  <div id="wcag">
+  <div id="options">
     <fieldset>
       <legend>WCAG level:</legend>
       <div>
@@ -43,10 +43,10 @@ document.querySelector<HTMLDivElement>('#app')!.innerHTML = `
 
   <div class="card">
     <label for="input1">Enter Color 1:</label>
-    <input type="text" id="input1" name="input1" placeholder="Color value" />
+    <input type="text" id="input1" name="input1" placeholder="Color value" title="After entering a valid color, a suitable, high-contrast background color is randomly selected, which was determined using the contrastColor function"/>
 
     <label for="input2">Enter Color 2:</label>
-    <input type="text" id="input2" name="input2" placeholder="Color value" />
+    <input type="text" id="input2" name="input2" placeholder="Color value" title="After entering a valid color, a suitable, high-contrast background color is randomly selected, which was determined using the contrastColor function"/>
 
     <button id="counter" type="button">Check Ratio</button>
   </div>
