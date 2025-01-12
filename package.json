@@ -1,10 +1,14 @@
 {
   "name": "hue-check",
-  "version": "0.1.1",
+  "version": "1.0.0",
   "description": "A lightweight library for checking color contrast and generating accessible color palettes",
   "main": "./dist/index.js",
   "module": "./dist/index.mjs",
   "types": "./dist/index.d.ts",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/bpetermann/hue-check.git"
+  },
   "files": [
     "dist",
     "LICENSE",
