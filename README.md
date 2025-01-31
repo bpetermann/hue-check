@@ -25,6 +25,12 @@
   - The contrast ratio between the two colors.
   - `undefined` if the input colors are invalid.
 
+### :arrow_right: hexToNamedColor
+
+- Converts a hex color code to its corresponding CSS named color.
+- **Returns:**
+  - The CSS named color if found, otherwise `undefined`.
+
 ## Example
 
 ```ts
@@ -33,6 +39,7 @@ import { contrastColors, contrastRatio, isRatioOk } from 'hue-check';
 const sufficentRatio = isRatioOk('papayawhip', '#000'); // true
 const contrastColor = contrastColors('papayawhip')?.[0] ?? ''; // "black"
 const ratio = contrastRatio('white', '#000000'); // 21
+const ratio = hexToNamedColor('#fff'); // "white"
 ```
 
 ## Contributing
