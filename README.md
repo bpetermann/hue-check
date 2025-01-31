@@ -39,7 +39,7 @@ import { contrastColors, contrastRatio, isRatioOk } from 'hue-check';
 const sufficentRatio = isRatioOk('papayawhip', '#000'); // true
 const contrastColor = contrastColors('papayawhip')?.[0] ?? ''; // "black"
 const ratio = contrastRatio('white', '#000000'); // 21
-const ratio = hexToNamedColor('#fff'); // "white"
+const colorName = hexToNamedColor('#fff'); // "white"
 ```
 
 ## Contributing
