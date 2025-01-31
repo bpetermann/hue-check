@@ -29,12 +29,17 @@ describe('Color Utils', () => {
       '#123 45',
       '123456',
       'FFF',
+      '#12x',
       '#',
-      '#12345678',
       '',
-      '#00000000',
     ].forEach((str) => {
       expect(isHex(str)).toBe(false);
+    });
+  });
+
+  test('Should work for hexcode with alpha set', () => {
+    ['#00f8', '#0000ffc0', '#0000', '#ffff', '#1234'].forEach((str) => {
+      expect(isHex(str)).toBe(true);
     });
   });
 

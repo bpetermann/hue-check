@@ -32,11 +32,44 @@ describe('contrastRatio', () => {
       contrastRatio('123456', '#fff'),
       contrastRatio('FFF', '#fff'),
       contrastRatio('#', '#fff'),
-      contrastRatio('#12345678', '#fff'),
       contrastRatio('', '#fff'),
-      contrastRatio('#00000000', '#fff'),
     ].forEach((result) => {
       expect(result).toBe(undefined);
     });
   });
+
+  /* Alpha */
+
+  test('Returns correct ratio for b/w with alpha', () =>
+    expect(contrastRatio('#ffffff', '#0000')).toBeCloseTo(21));
+
+  test('Returns correct ratio for white and fully transparent black', () =>
+    expect(contrastRatio('#ffffff', '#0000')).toBeCloseTo(21));
+
+  test('Returns correct ratio for fully transparent white and black', () =>
+    expect(contrastRatio('#ffff', '#000000')).toBeCloseTo(21));
+
+  test('Returns correct ratio for semi-transparent white on black', () =>
+    expect(contrastRatio('#ffffff80', '#000000')).toBeLessThan(21));
+
+  test('Returns correct ratio for black with 50% opacity on white', () =>
+    expect(contrastRatio('#00000080', '#ffffff')).toBeGreaterThan(1));
+
+  test('Returns correct ratio for semi-transparent gray on white', () =>
+    expect(contrastRatio('#88888880', '#ffffff')).toBeGreaterThan(1));
+
+  test('Returns correct ratio for opaque color against semi-transparent background', () =>
+    expect(contrastRatio('#ff5733', '#12345680')).toBeGreaterThan(1));
+
+  test('Returns correct ratio for two semi-transparent colors', () =>
+    expect(contrastRatio('#ff573380', '#12345680')).toBeGreaterThan(1));
+
+  test('Returns correct ratio for fully transparent colors', () =>
+    expect(contrastRatio('#0000', '#ffff')).toBeCloseTo(21));
+
+  test('Returns correct ratio when both colors are semi-transparent white and black', () =>
+    expect(contrastRatio('#ffffff80', '#00000080')).toBeGreaterThan(1));
+
+  test('Returns correct ratio when both colors are the same but one is transparent', () =>
+    expect(contrastRatio('#ff0000', '#ff000080')).toBeGreaterThan(1));
 });

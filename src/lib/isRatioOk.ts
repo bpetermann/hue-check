@@ -5,7 +5,7 @@ import { meetsContrastRequirement } from './luminanceUtils';
 /**
  * Determines if the contrast ratio between two colors meets the specified WCAG accessibility level.
  *
- * @param {string} color1 - The first color in hex format (e.g., `#ffffff`) or a named color (e.g., "red").
+ * @param {string} color1 - The first color in 3, 4, 6 or 8-digit hex format (e.g.,`#ffffff`) or a named color (e.g., "red").
  *   - Invalid or missing colors result in `undefined`.
  * @param {string} color2 - The second color in hex format or a named color.
  *   - Invalid or missing colors result in `undefined`.
@@ -27,6 +27,10 @@ import { meetsContrastRequirement } from './luminanceUtils';
  * @example
  * // Valid input with large text in pixels
  * const isAccessible = isRatioOk('blue', 'white', 'AAA', '18px'); // true
+ *
+ * @example
+ * // Valid input with alpha set
+ * const isAccessible = isRatioOk('#ffffff', '#0000'); // false
  *
  * @example
  * // Valid input with large text in em

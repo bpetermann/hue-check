@@ -11,6 +11,11 @@ describe('contrastColors', () => {
     expect(result.length).toEqual(89);
   });
 
+  test('Should return 89 colors for "white" with alpha 0', () => {
+    const result = contrastColors('#fff0', 'AAA', '12px');
+    expect(result.length).toEqual(89);
+  });
+
   test('Should return more colors for AA level compared to AAA level for "white"', () => {
     const resultAA = contrastColors('white', 'AA', 12);
     const resultAAA = contrastColors('white', 'AAA', 12);

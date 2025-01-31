@@ -4,7 +4,7 @@ import { luminance, ratio } from './luminanceUtils';
 /**
  * Determines the contrast ratio between two colors.
  *
- * @param {string} color1 - The first color in hex format (e.g., `#ffffff`) or a named color (e.g., "red").
+ * @param {string} color1 - The first color in 3, 4, 6 or 8-digit hex format (e.g., `#ffffff`) or a named color (e.g., "red").
  *                          If the color is invalid or missing, the function returns `undefined`.
  * @param {string} color2 - The second color in hex format or a named color.
  *                          If the color is invalid or missing, the function returns `undefined`.

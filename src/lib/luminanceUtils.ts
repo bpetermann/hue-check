@@ -1,9 +1,14 @@
-export const luminance = (rgb: [number, number, number]) => {
-  const [r, g, b] = rgb.map((v) => {
-    v /= 255;
-    return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
-  });
-  return r * 0.2126 + g * 0.7152 + b * 0.0722;
+export const luminance = (rgba: number[]) => {
+  const [r, g, b, a = 1] = rgba;
+
+  const lum = [r, g, b]
+    .map((v) => {
+      v /= 255;
+      return v <= 0.03928 ? v / 12.92 : Math.pow((v + 0.055) / 1.055, 2.4);
+    })
+    .reduce((acc, val, i) => acc + val * [0.2126, 0.7152, 0.0722][i], 0);
+
+  return lum * a;
 };
 
 export const ratio = (lum1: number, lum2: number): number =>

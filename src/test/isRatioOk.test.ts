@@ -21,4 +21,7 @@ describe('isRatioOk', () => {
 
   test('Handles mixed-case colors correctly', () =>
     expect(isRatioOk('WHITE', '#000')).toEqual(true));
+
+  test('Handles alpha correctly', () =>
+    expect(isRatioOk('#fff0', '#000')).toEqual(false));
 });
