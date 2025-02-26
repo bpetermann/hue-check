@@ -31,6 +31,10 @@
 - **Returns:**
   - The CSS named color if found, otherwise `undefined`.
 
+### :arrow_right: cssNamedColors
+
+- An object containing all css named colors as keys and the corresponding hex codes as values.
+
 ## Example
 
 ```ts
