@@ -1,4 +1,4 @@
-# :art: Hue Check &middot; [![NPM version][npm-image]][npm-url] ![npm-typescript] ![GitHub License](https://img.shields.io/github/license/bpetermann/hue-check) ![NPM Downloads](https://img.shields.io/npm/dw/hue-check)
+# :art: Hue Check &middot; [![NPM version][npm-image]][npm-url] ![npm-typescript] ![GitHub License](https://img.shields.io/github/license/bpetermann/hue-check) ![NPM Downloads](https://img.shields.io/npm/dy/hue-check)
 
 **Hue check** is a lightweight library for checking color contrast and generating accessible color palettes.
 
